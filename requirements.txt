@@ -1,0 +1,6 @@
+git+https://github.com/thunderhead-labs/common-os.git
+pandas==1.5.2
+SQLAlchemy==1.4.44
+
+matplotlib~=3.6.3
+numpy~=1.23.5
