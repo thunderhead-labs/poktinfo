@@ -24,7 +24,7 @@ Chain is preferred as well but not required.
 """
 
 
-SLACK_BOT_TOKEN = "xoxb-2917808781635-4718995245616-qFBqSeWwpAZ60LoboiLz1xx5"
+SLACK_BOT_TOKEN = "your-token"
 
 
 def get_heatmap_data(func, sets, chains, from_height, to_height):
