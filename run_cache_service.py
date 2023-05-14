@@ -1,5 +1,6 @@
 import sys
 from concurrent.futures import ProcessPoolExecutor as Pool, as_completed
+from multiprocessing import Process
 from time import sleep
 
 from common.db_utils import ConnFactory
@@ -7,6 +8,7 @@ from common.orm.repository import PoktInfoRepository
 from common.price_utils import record_pocket_price
 from common.utils import get_last_block_height
 
+from block_time_update_process import run_blocktime_subprocess
 from definitions import IS_TEST, set_blocks_interval, get_blocks_interval
 
 if len(sys.argv) > 1:
@@ -27,6 +29,10 @@ from loggers import logger
 if __name__ == "__main__":
     coin, currency = "pokt", "usd"
     last_recorded_height = get_last_block_height() - get_blocks_interval()
+
+    p = Process(target=run_blocktime_subprocess)
+    p.start()
+
     while True:
         try:
             last_height = get_last_block_height()
